@@ -48,7 +48,7 @@
 #include <usb.h>
 #include <stdio.h>
 #include <time.h>
-
+#include <ctype.h>
 #include <string.h>
 #include <errno.h>
 #include <signal.h> 
@@ -138,6 +138,7 @@ usb_dev_handle* setup_libusb_access(int device) {
 
         usb_detach(lvr_winusb, INTERFACE2);
         
+        usb_reset(lvr_winusb);
  
         if (usb_set_configuration(lvr_winusb, 0x01) < 0) {
                 printf("Could not set configuration 1\n");
